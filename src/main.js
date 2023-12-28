@@ -1,6 +1,32 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+//pinia
+import { createPinia } from "pinia";
 
-createApp(App).use(store).use(router).mount("#app");
+//mitt to make emit globally
+import Emitter from "mitt";
+
+//swipper config
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+//vuetify
+import "vuetify/styles";
+import { createVuetify } from "vuetify";
+import * as components from "vuetify/components";
+import * as directives from "vuetify/directives";
+
+import "@mdi/font/css/materialdesignicons.css";
+
+const vuetify = createVuetify({
+  components,
+  directives,
+});
+createApp(App)
+  .use(vuetify)
+  .provide(Emitter)
+  .use(createPinia())
+  .use(router)
+  .mount("#app");

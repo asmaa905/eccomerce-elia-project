@@ -1,30 +1,23 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <layout-comp @openCurrConvertForm="openCurrConvertForm()">
+    <router-view />
+  </layout-comp>
 </template>
-
+<script>
+import LayoutComp from "@/components/Layouts/LayoutComp.vue";
+export default {
+  name: "App",
+  methods: {
+    openCurrConvertForm() {
+      console.log("hn ooo");
+      this.$router.push({ path: "/currency-convert" });
+    },
+  },
+  components: { LayoutComp },
+};
+</script>
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.v-rating__wrapper {
+  margin-right: 5px;
 }
 </style>
